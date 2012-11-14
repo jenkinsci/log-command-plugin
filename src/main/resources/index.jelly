@@ -1,0 +1,7 @@
+<!--
+  This view is used to render the installed plugins page.
+-->
+<div>
+  Adds a command for the CLI that shows the log for a job's build. Also adds a
+  command for Instant Messaging (if instant-messaging-plugin is installed)
+</div>
