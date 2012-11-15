@@ -39,15 +39,25 @@ public class ShowLogIMCommand extends AbstractTextSendingCommand {
 		try {
 			parser.parseArgument(argsToParser);
 		} catch (CmdLineException e) {			
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			parser.printSingleLineUsage(baos);
-			return getUsageCommandName() + " " + baos.toString();
+			return sender.toString() + ": " + e.getMessage() + "\n"
+					+ getUsageString();
 		}
 
-		return SLC.showLog(
-				sCommand.getJob(), 
-				sCommand.getBuildNumber(), 
-				sCommand.getMaxLines());						
+		try {
+			return SLC.showLog(
+					sCommand.getJob(), 
+					sCommand.getBuildNumber(), 
+					sCommand.getMaxLines());
+		} catch (WrongBuildNumberException e) {
+			return sender.toString() + ": " + e.getMessage() + "\n"
+					+ getUsageString();
+		}						
+	}
+	
+	private String getUsageString () {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		parser.printSingleLineUsage(baos);
+		return "Usage: " + getUsageCommandName() + " " + baos.toString();
 	}
 
 	private String getUsageCommandName() {
@@ -75,6 +85,6 @@ public class ShowLogIMCommand extends AbstractTextSendingCommand {
 	
 	@Override
 	public String getHelp() {
-		return " - " + Messages.ShowLogCommand();
+		return " <job> [-bNumber (-b) <N>] [-nLines (-n) <N>] - " + Messages.ShowLogCommand();
 	}
 }

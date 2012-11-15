@@ -7,7 +7,7 @@ import hudson.model.AbstractProject;
 
 public class SLC {
 	
-	public static String showLog(AbstractProject<?, ?> job, int buildNumber, int maxLines) {		
+	public static String showLog(AbstractProject<?, ?> job, int buildNumber, int maxLines) throws WrongBuildNumberException {		
 		AbstractBuild<?, ?> build = buildNumber > 0 ? job.getBuildByNumber(buildNumber) : job.getLastBuild();
 		
 		String toRet = "";
@@ -21,6 +21,9 @@ public class SLC {
 			catch(IOException e){
 				e.printStackTrace();
 			}
+		}
+		else{
+			throw new WrongBuildNumberException();
 		}
 		return toRet;
 	}
