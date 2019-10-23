@@ -37,6 +37,13 @@ Same as CLI, but it also provides an alias for the command: **sl**.
 Changelog
 ---------
 
+[[version-1.0.2]]
+Version 1.0.2
+~~~~~~~~~~~~~
+
+* Migrate documentation to github
+* Build on ci.jenkins.io
+
 [[version-1.0.1]]
 Version 1.0.1
 ~~~~~~~~~~~~~
