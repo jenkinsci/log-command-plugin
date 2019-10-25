@@ -10,12 +10,12 @@ public class SLC {
 	public static String showLog(AbstractProject<?, ?> job, int buildNumber, int maxLines) throws WrongBuildNumberException {		
 		AbstractBuild<?, ?> build = buildNumber > 0 ? job.getBuildByNumber(buildNumber) : job.getLastBuild();
 		
-		String toRet = "";
+		StringBuffer toRet = new StringBuffer();
 		if(null != build)
 		{		
 			try{				
 				for (String logLine : build.getLog(maxLines + 1)) {
-					toRet += logLine + "\n";
+					toRet.append(logLine + "\n");
 				}				
 			}
 			catch(IOException e){
@@ -25,6 +25,6 @@ public class SLC {
 		else{
 			throw new WrongBuildNumberException();
 		}
-		return toRet;
+		return toRet.toString();
 	}
 }

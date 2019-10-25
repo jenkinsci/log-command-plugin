@@ -85,6 +85,6 @@ public class ShowLogIMCommand extends AbstractTextSendingCommand {
 	
 	@Override
 	public String getHelp() {
-		return " <job> [-bNumber (-b) <N>] [-nLines (-n) <N>] - " + Messages.ShowLogCommand();
+		return " <job> [-bNumber (-b) <N>] [-nLines (-n) <N>] - " + Messages.showLogCommand();
 	}
 }

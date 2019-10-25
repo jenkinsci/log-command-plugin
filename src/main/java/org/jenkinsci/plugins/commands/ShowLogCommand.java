@@ -31,7 +31,7 @@ public class ShowLogCommand extends CLICommand {
 	
 	@Override
 	public String getShortDescription() {
-		return Messages.ShowLogCommand(); 
+		return Messages.showLogCommand(); 
 	}
 
 	protected int getBuildNumber() {
