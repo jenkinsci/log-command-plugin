@@ -11,7 +11,7 @@ import hudson.model.AbstractProject;
 @Extension
 public class ShowLogCommand extends CLICommand {
 		
-	private final int NOBUILD_ERRORCODE = 1;
+	private static final int NOBUILD_ERRORCODE = 1;
 	
 	private CmdLineParser cmdLineParser;
 	
