@@ -2,9 +2,9 @@ package org.jenkinsci.plugins.commands;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
@@ -57,7 +57,11 @@ public class ShowLogIMCommand extends AbstractTextSendingCommand {
 	private String getUsageString () {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		parser.printSingleLineUsage(baos);
-		return "Usage: " + getUsageCommandName() + " " + baos.toString();
+		try {
+			return "Usage: " + getUsageCommandName() + " " + baos.toString("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			return "Error with UTF8-encoding when showing usage: " + e.getMessage();
+		}
 	}
 
 	private String getUsageCommandName() {
@@ -65,14 +69,14 @@ public class ShowLogIMCommand extends AbstractTextSendingCommand {
 		if(cNames.size() == 1)
 			return cNames.iterator().next();
 		
-		String uCn = "{";
+		StringBuffer uCn = new StringBuffer();
+		uCn.append("{");
 		
-		Iterator<String> iterator = cNames.iterator();
 		for (String name : cNames) {
-			uCn += name + " | "; 
+			uCn.append(name + " | "); 
 		}
-		uCn = uCn.substring(0, uCn.lastIndexOf('|')) + "}";
-		return uCn;
+		String uCnRet = uCn.toString().substring(0, uCn.toString().lastIndexOf('|')) + "}";
+		return uCnRet;
 		
 	}
 	
@@ -85,6 +89,6 @@ public class ShowLogIMCommand extends AbstractTextSendingCommand {
 	
 	@Override
 	public String getHelp() {
-		return " <job> [-bNumber (-b) <N>] [-nLines (-n) <N>] - " + Messages.ShowLogCommand();
+		return " <job> [-bNumber (-b) <N>] [-nLines (-n) <N>] - " + Messages.showLogCommand();
 	}
 }
