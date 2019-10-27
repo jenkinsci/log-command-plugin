@@ -43,6 +43,10 @@ Version 1.0.2
 
 * Migrate documentation to github
 * Build on ci.jenkins.io
+* Updated dependencies:
+** new parent pom
+** more recent version of jenkins core
+** more recent version of instant-messaging plugin
 
 [[version-1.0.1]]
 Version 1.0.1
