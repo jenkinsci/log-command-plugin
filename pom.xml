@@ -4,7 +4,7 @@
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
     <version>3.51</version>
-    <relativePath/>
+    <relativePath />
   </parent>
   <properties>
     <jenkins.version>2.176.4</jenkins.version><!-- which version of Jenkins is this plugin built against? -->
@@ -16,6 +16,7 @@
      <connection>scm:git:ssh://github.com/jenkinsci/log-command-plugin.git</connection>
      <developerConnection>scm:git:ssh://git@github.com/jenkinsci/log-command-plugin.git</developerConnection>
      <url>https://github.com/jenkinsci/log-command-plugin.git</url>
+    <tag>log-command-1.0.2</tag>
   </scm>
 
   <url>https://github.com/jenkinsci/log-command-plugin</url>
@@ -29,7 +30,7 @@
 
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>log-command</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2</version>
   <packaging>hpi</packaging>
   <name>Log Command Plugin</name>
 
